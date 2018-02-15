@@ -18,7 +18,7 @@ export default class TetheredSelectWrap extends Select {
         const selectWidth = this.wrapper ? this.wrapper.offsetWidth : null;
         return (
             <TetherComponent
-                renderElementTo=".process-form-header"
+                renderElementTo=".react-virtualized-mount-node"
                 ref="tethered-component"
                 attachment="top left"
                 targetAttachment="top left"
