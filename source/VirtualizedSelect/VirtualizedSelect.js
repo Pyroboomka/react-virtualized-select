@@ -1,8 +1,7 @@
 /** @flow */
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-import Select  from 'react-select'
-import TetheredSelectWrap from './TetheredSelect'
+import Select from './SelectWithPortal'
 
 // Import directly to avoid Webpack bundling the parts of react-virtualized that we are not using
 import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer'
@@ -143,13 +142,15 @@ export default class VirtualizedSelect extends Component {
 
   _getSelectComponent () {
     const { async, selectComponent } = this.props
-
+    /**
+     * Not even sure that Async will work with this menu renderer, but whatever.
+     */
     if (selectComponent) {
       return selectComponent
     } else if (async) {
       return Select.Async
     } else {
-      return TetheredSelectWrap
+      return Select
     }
   }
 
