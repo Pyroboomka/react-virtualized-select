@@ -3,6 +3,19 @@ import ReactDOM from 'react-dom'
 import ReactSelect from 'react-select'
 
 export default class Select extends ReactSelect {
+  handleTouchOutside(event) {
+      // handle touch outside on ios to dismiss menu
+      if (
+          this.wrapper &&
+          !this.wrapper.contains(event.target) &&
+          this.menuContainer &&
+          !this.menuContainer.contains(event.target) &&
+          this.menu &&
+          !this.menu.contains(event.target)
+      ) {
+          this.closeMenu();
+      }
+  }
     renderOuter(options, valueArray, focusedOption) {
         const dimensions = this.wrapper ? this.wrapper.getBoundingClientRect() : null
         const menu = super.renderMenu(options, valueArray, focusedOption)
